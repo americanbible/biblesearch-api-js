@@ -1,0 +1,24 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.phonegap.plugins.absbiblesearch"
+    version="1.0.0">
+
+    <name>American Bible Society Biblesearch</name>
+
+    <engines>
+	    <engine name="cordova" version=">=1.7.0" />
+	</engines>
+
+	<asset src="www/ABSBibleSearch.js" target="ABSBibleSearch.js" />
+
+	<!-- android -->
+	<platform name="android">
+		<!-- for future use -->
+	</platform>
+
+	<!-- ios -->
+	<platform name="ios">
+		<!-- for future use -->
+	</platform>
+
+</plugin>
