@@ -1,6 +1,5 @@
 // Copyright 2012 American Bible Society
 // Licensed under MIT.
-// http://api-v2-docs.abs.aghosted.com/pages/api
 // http://bibles.org/pages/api
 
 (function() {
