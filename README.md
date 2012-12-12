@@ -13,12 +13,12 @@ In addition ABS manages the version copyright requirements and keeping the textu
 
 This plugin is compatible with the new cordova plugin package management initiative (http://shazronatadobe.wordpress.com/2012/11/07/cordova-plugins-put-them-in-your-own-repo-2/).  If you have pluginstall (https://github.com/alunny/pluginstall) then install the plugin via that tool.  If you don't then follow these steps.
 
-1 Move the ABSBiblesearch.js file into your project.  You can keep this wherever you typically store your plugin js files.
-2 Add a script reference to the js file
-3 Add two hosts to your External Hosts white list to allow communication with the api.
-  a *.bibles.org
-  b	*.cloudfront.net
-4 Get an API key.  The key is free.  http://bibles.org/pages/api/signup
+* Move the ABSBiblesearch.js file into your project.  You can keep this wherever you typically store your plugin js files.
+* Add a script reference to the js file
+* Add two hosts to your External Hosts white list to allow communication with the api.
+ * *.bibles.org
+ *	*.cloudfront.net
+* Get an API key.  The key is free.  http://bibles.org/pages/api/signup
 
 Unlike most plugins there is no native code, so you don't have to add this plugin to the phonegap plugin list or move code around.  
 
