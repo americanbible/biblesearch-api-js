@@ -14,7 +14,7 @@ In addition ABS manages the version copyright requirements and keeping the textu
 
 This plugin is compatible with the new cordova plugin package management initiative (http://shazronatadobe.wordpress.com/2012/11/07/cordova-plugins-put-them-in-your-own-repo-2/).  If you have pluginstall (https://github.com/alunny/pluginstall) then install the plugin via that tool.  If you don't then follow these steps.
 
-* Move the ABSBiblesearch.js file into your project.  You can keep this wherever you typically store your plugin js files.
+* Move the www/ABSBiblesearch.js file into your project.  You can keep this wherever you typically store your plugin js files.
 * Add a script reference to the js file
 * Add two hosts to your External Hosts white list to allow communication with the api.
  * *.bibles.org
