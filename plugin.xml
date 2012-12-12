@@ -6,19 +6,18 @@
     <name>American Bible Society Biblesearch</name>
 
     <engines>
-	    <engine name="cordova" version=">=1.7.0" />
-	</engines>
+        <engine name="cordova" version=">=1.7.0" />
+    </engines>
 
-	<asset src="www/ABSBibleSearch.js" target="ABSBibleSearch.js" />
+    <asset src="www/ABSBibleSearch.js" target="ABSBibleSearch.js" />
 
-	<!-- android -->
-	<platform name="android">
-		<!-- for future use -->
-	</platform>
+    <!-- android -->
+    <platform name="android">
+        <!-- for future use -->
+    </platform>
 
-	<!-- ios -->
-	<platform name="ios">
-		<!-- for future use -->
-	</platform>
-
+    <!-- ios -->
+    <platform name="ios">
+        <!-- for future use -->
+    </platform>
 </plugin>
