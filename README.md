@@ -1,11 +1,12 @@
 # biblesearch-api-js
 
-The American Bible Society has produced this javascript library to ease the use of the Bible Search api located at http://bibles.org/pages/api.  The api (and this library) allow you to easily: 
+The American Bible Society has produced this javascript library to ease the use of the Bible Search api (http://bibles.org/pages/api) in phonegap mobile applications.  The api (and this library) allow you to easily: 
 
 * search the Bible
 * locate specific passages
 * get information about specific books, chapters, and verses
-* do all that in specific versions or all versions
+* do all that in one or more versions
+* store nothing locally
 
 In addition ABS manages the version copyright requirements and keeping the textual data up to date with latest changes by the copyright owners/publishers.  Use of this library and the api is free to the public for non-commercial use.  See http://bibles.org/pages/api for additional information.
 
@@ -20,7 +21,24 @@ This plugin is compatible with the new cordova plugin package management initiat
  *	*.cloudfront.net
 * Get an API key.  The key is free.  http://bibles.org/pages/api/signup
 
-Unlike most plugins there is no native code, so you don't have to add this plugin to the phonegap plugin list or move code around.  
+Unlike most plugins there is no native code, so you don't have to add this plugin to the phonegap plugin list.  
 
 ## Usage
+
+In your javascript:
+
+	var bsearch = plugins.absBiblesearch; // just to make access easier.
+	bsearch.setKey(/*your API key goes here*/); // just do this once in your app initialization
+
+	// at this point you are ready to make api calls.
+	if (!bsearch.versionsByLanguage('eng-US', function(data) {
+		// data will now contain a JSON object.  To see an example of the content see the api documentation.
+        for (var i = 0; i < data.response.versions.length; i++) {
+            var version = data.response.versions[i];
+            alert(version.version + ': ' + version.name);
+        }    
+    })) {
+        alert('error: ' + bsearch.lastError());
+    }
+
 
