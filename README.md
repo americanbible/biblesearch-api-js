@@ -41,4 +41,6 @@ In your javascript:
         alert('error: ' + bsearch.lastError());
     }
 
+## Comments and Complaints
 
+If you have any issues you can let us know by email at mbradshaw@americanbible.org.
