@@ -6,7 +6,6 @@
     var _baseUrl = '';
 	var _APIKey = '';
 	var _lastError = '';
-    var _xhr = null;
     var _fumsJs = '';
     var _fumsJsIncluded = false;
     var _fumsInterval = null;
@@ -401,7 +400,7 @@
 			return false;
 		}
  
-        if (_xhr == null) { _xhr = new XMLHttpRequest(); }
+        var _xhr = new XMLHttpRequest();
         _xhr.onreadystatechange = function() {
             if (_debug) { console.log('ABS state: ' + _xhr.readyState); }
             if (_xhr.readyState == 4 && _xhr.status == 200) {
