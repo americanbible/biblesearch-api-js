@@ -1,4 +1,4 @@
-// Version 1.0.2
+// Version 1.0.3
 // Copyright 2013 American Bible Society
 // Licensed under MIT.
 // http://bibles.org/pages/api
@@ -14,7 +14,7 @@
     var _async = true;
     var _debug = false;
 
-    function ABSBiblesearch() {}
+    function ABSBiblesearch() { }
 
     ABSBiblesearch.prototype.turnOnLogging = function() {
         _debug = true;
@@ -35,6 +35,7 @@
     };
 
     // ############################## ASYNC #################################
+    /* We've found that using this inside an android simulator sometimes needs async turned off. */
     ABSBiblesearch.prototype.setAsync = function(async) {
         _async = async;
     };
@@ -53,7 +54,7 @@
     // ################################## SEARCH ############################
     /*
         http://bibles.org/pages/api/documentation/search
-        The BibleSearch API provides a general search endpoint. It accepts a query parameter that can be either a passage or a keyword and will automatically figure out what kind of query you've given it. If it's a keyword search, the results will be the same as a keyword search on the website: the parser performs stemming and also takes into account users' tags and "Was this helpful?" votes.
+        The BibleSearch API provides a general search endpoint. It accepts a query parameter that can be either a passage or a keyword and will automatically figure out what kind of query you've given it. If it's a keyword search, the results will be the same as a keyword search on the website: the parser performs stemming and also takes into account users' tags and 'Was this helpful?' votes.
     */
     ABSBiblesearch.prototype.search = function(options, callback) {
         if (_APIKey == '') {
@@ -251,13 +252,13 @@
 
         var url = _baseUrl + 'chapters/' + options.version + ':' + options.book + '.' + options.chapter + '/verses.js';
         if (options.start || options.end) {
-            url = url + "?";
+            url = url + '?';
         }
         if (options.start && options.start != '') {
-            url = url + "start=" + options.start + "&"
+            url = url + 'start=' + options.start + '&'
         }
         if (options.end && options.end != '') {
-            url = url + "end=" + options.end
+            url = url + 'end=' + options.end
         }
         return this.json(url, callback);
     };
@@ -338,9 +339,9 @@
         http://bibles.org/pages/api/documentation/passages
         Returns a structured response containing a collection of references to passages specified by the q[] querystring parameter. One or more Bible versions may be specified by the version parameter. Misspelled book names or abbreviations will be corrected if possible.
 
-        Multiple passage specifiers can be included in a comma-separated list. Examples: "John+3", "John+3-5", "John+3:12", "John+3:12-15", "John+3,Luke+2".
+        Multiple passage specifiers can be included in a comma-separated list. Examples: 'John+3', 'John+3-5', 'John+3:12', 'John+3:12-15', 'John+3,Luke+2'.
 
-        The available version IDs can be listed with the versions endpoint. Multiple version IDs can be included in a comma-separated list. Examples: "KJV", "GNT,CEV".
+        The available version IDs can be listed with the versions endpoint. Multiple version IDs can be included in a comma-separated list. Examples: 'KJV', 'GNT,CEV'.
 
         It's important to note that the response only contains references to the passage(s), and a preview of the first three verses of the passage(s) themselves. To fetch the full Bible text of each passage you will need to use the verse api.
     */
@@ -398,7 +399,7 @@
             return false;
         }
 
-        if (path.substr(0, 1) == "/") {
+        if (path.substr(0,1) == '/') {
             path = path.substr(1);
         }
         var url = _baseUrl + path;
@@ -411,15 +412,12 @@
 
     // ################################# UTILS ######################################
     ABSBiblesearch.prototype.networkIsUp = function() {
-        if (navigator.connection && (navigator.connection.type == Connection.UNKNOWN || navigator.connection.type == Connection.NONE)) {
-            if (_debug) {
-                console.log('ABS - Network down');
-            }
+        if (navigator.connection && (navigator.connection.type == Connection.UNKNOWN || navigator.connection.type == Connection.NONE) ) {
+            if (_debug) { console.log('ABS - Network down'); }
             return false;
-        } else {
-            if (_debug) {
-                console.log('ABS - Network up');
-            }
+        }
+        else {
+            if (_debug) { console.log('ABS - Network up'); }
             return true;
         }
     };
@@ -431,33 +429,23 @@
 
     // ###################### JSON ###########################
     ABSBiblesearch.prototype.json = function(url, callback, timeout) {
-        if (_debug) {
-            console.log('ABS json - url: ' + url);
-        }
+        if (_debug) { console.log('ABS json - url: ' + url); }
 
         callback = callback || function() {};
 
         if (!this.networkIsUp()) {
-            if (_debug) {
-                console.log('ABS json failed.  No network.');
-            }
+            if (_debug) { console.log('ABS json failed.  No network.'); }
             _lastError = 'Network is not up.';
             return false;
         }
 
         var _xhr = new XMLHttpRequest();
         _xhr.onreadystatechange = function() {
-            if (_debug) {
-                console.log('ABS state: ' + _xhr.readyState);
-            }
-            if (_debug && _xhr.readyState === 4) {
-                console.log('ABS status: ' + _xhr.status);
-            }
+            if (_debug) { console.log('ABS state: ' + _xhr.readyState); }
+            if (_debug && _xhr.readyState === 4) { console.log('ABS status: ' + _xhr.status); }
             if (_xhr.readyState === 4 && _xhr.status == 200) {
-                if (_debug) {
-                    console.log('ABS responseText: ' + _xhr.responseText);
-                }
-                var obj = window.plugins.absBiblesearch.parseJSON(_xhr.responseText + "");
+                if (_debug) { console.log('ABS responseText: ' + _xhr.responseText); }
+                var obj = window.plugins.absBiblesearch.parseJSON(_xhr.responseText + '');
 
                 //FUMS - Fair Use Management.  See http://bibles.org/pages/api/documentation/fums
                 window.plugins.absBiblesearch.setFumsJs(obj.response.meta.fums_js_include);
@@ -467,8 +455,8 @@
             }
         };
 
-        _xhr.open("GET", url, _async, _APIKey, 'x');
-        _xhr.setRequestHeader("Authorization", 'Basic ' + btoa(_APIKey + ':x'));
+        _xhr.open('GET', url, _async, _APIKey, 'x');
+        _xhr.setRequestHeader('Authorization', 'Basic ' + btoa(_APIKey + ':x'));
         _xhr.timeout = 10000;
         _xhr.ontimeout = timeout ? timeout : this.timeout;
         _xhr.send(null);
@@ -477,13 +465,13 @@
     };
 
     ABSBiblesearch.prototype.parseJSON = function(data) {
-        if (!data || typeof data !== "string") {
+        if ( !data || typeof data !== 'string') {
             return null;
         }
 
         // Adapted from jQuery 1.8.2
-        rtrim = new RegExp("^[\\x20\\t\\r\\n\\f]+|((?:^|[^\\\\])(?:\\\\.)*)[\\x20\\t\\r\\n\\f]+$", "g");
-        data = (data + "").replace(rtrim, "");
+        rtrim = new RegExp( '^[\\x20\\t\\r\\n\\f]+|((?:^|[^\\\\])(?:\\\\.)*)[\\x20\\t\\r\\n\\f]+$', 'g' );
+        data = (data + '').replace(rtrim, '');
 
         return JSON.parse(data);
     };
@@ -514,16 +502,12 @@
 
     // Mostly just for testing purposes
     ABSBiblesearch.prototype.setFumsInterval = function(value) {
-        if (value == null && _fumsInterval != null) {
-            clearInterval(_fumsInterval);
-        }
+        if (value == null && _fumsInterval != null ) { clearInterval(_fumsInterval); }
         _fumsInterval = value;
     };
 
     ABSBiblesearch.prototype.suppressFumsInjection = function(flag) {
-        if (flag == null) {
-            flag = true;
-        }
+        if (flag == null) { flag = true; }
         _fumsInjectionSuppression = flag;
     }
 
@@ -533,10 +517,10 @@
         }
 
         if (!_fumsJsIncluded && this.networkIsUp()) {
-            var head = document.getElementsByTagName("head")[0];
-            var script = document.createElement("script");
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
             script.src = 'http://' + _fumsJs;
-            script.id = "FumsJs";
+            script.id = 'FumsJs';
             head.insertBefore(script, head.firstChild);
             _fumsJsIncluded = true;
         }
@@ -546,13 +530,14 @@
     // Store each FUMS item in localstorage for persistence.
     ABSBiblesearch.prototype.addFums = function(data) {
         var _fums;
-        if (localStorage.getItem("absFums") === null) {
+        if (localStorage.getItem('absFums') === null) {
             _fums = new Array();
-        } else {
-            _fums = JSON.parse(window.localStorage.getItem("absFums"));
+        }
+        else {
+            _fums = JSON.parse(window.localStorage.getItem('absFums'));
         }
         _fums.push(data);
-        window.localStorage.setItem("absFums", JSON.stringify(_fums));
+        window.localStorage.setItem('absFums', JSON.stringify(_fums));
 
         // Fire off the flush
         return window.plugins.absBiblesearch.flushFums();
@@ -561,17 +546,19 @@
     // Shift off the first item in the fums array
     ABSBiblesearch.prototype.getFums = function(data) {
         var _fums;
-        if (localStorage.getItem("absFums") === null) {
+        if (localStorage.getItem('absFums') === null) {
             return null;
-        } else {
-            _fums = JSON.parse(window.localStorage.getItem("absFums"));
+        }
+        else {
+            _fums = JSON.parse(window.localStorage.getItem('absFums'));
         }
 
         var val = _fums.shift();
         if (_fums.length == 0) {
-            window.localStorage.removeItem("absFums");
-        } else {
-            window.localStorage.setItem("absFums", JSON.stringify(_fums));
+            window.localStorage.removeItem('absFums');
+        }
+        else {
+            window.localStorage.setItem('absFums', JSON.stringify(_fums));
         }
 
         return val;
@@ -598,11 +585,12 @@
 
         // We're ready.  Get the fums array from local storage.
         var _fums;
-        if (localStorage.getItem("absFums") === null) {
+        if (localStorage.getItem('absFums') === null) {
             // There's nothing to push.  We're done.
             return true;
-        } else {
-            _fums = JSON.parse(window.localStorage.getItem("absFums"));
+        }
+        else {
+            _fums = JSON.parse(window.localStorage.getItem('absFums'));
         }
 
         // For each fums item, push it into the DOM.
@@ -613,7 +601,7 @@
         }
 
         // take _fums out of localstorage.
-        window.localStorage.removeItem("absFums");
+        window.localStorage.removeItem('absFums');
         return true;
     };
 
