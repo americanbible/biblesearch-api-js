@@ -52,6 +52,8 @@ If you have any issues you can let us know by email at mbradshaw@americanbible.o
 
 ## Changelog
 
+v1.0.5 - Fix for ios.  Auth header wasn't going through in some cases, so we're going low-tech.  Works in ios and safari.
+
 v1.0.4 - Update for cordova v3 plugin architecture.
 
 v1.0.3 - Fix asynchronous credential issue

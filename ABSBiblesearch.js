@@ -1,4 +1,4 @@
-// Version 1.0.4
+// Version 1.0.5
 // Copyright 2013 American Bible Society
 // Licensed under MIT.
 // http://americanbible.github.io/biblesearch-api-js/
