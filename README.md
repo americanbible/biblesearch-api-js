@@ -1,6 +1,6 @@
 # biblesearch-api-js
 
-The American Bible Society has produced this javascript library to ease the use of the Bible Search api (http://bibles.org/pages/api) in phonegap mobile applications.  The api (and this library) allow you to easily:
+The American Bible Society has produced this javascript library to ease the use of the Bible Search api (http://bibles.org/pages/api) in web/cordova/phonegap applications.  The api (and this library) allow you to easily:
 
 * search the Bible
 * locate specific passages
@@ -12,13 +12,15 @@ In addition ABS manages the version copyright requirements and keeping the textu
 
 ## Installation
 
-To install this plugin, follow the [Command-line Interface Guide](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface).
+To install this plugin in a cordova/phonegap app, follow the [Command-line Interface Guide](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface).
 
     cordova plugin add https://github.com/americanbible/biblesearch-api-js.git
 
 If you are not using the Cordova Command-line Interface, follow [Using Plugman to Manage Plugins](http://cordova.apache.org/docs/en/edge/guide_plugin_ref_plugman.md.html).
 
     plugman --platform ios --project platforms/ios/ --plugin https://github.com/americanbible/biblesearch-api-js.git
+
+If you want to use this in a web app then just include the script appropriately for your application.  It can be easily loaded via require.js with no problems.  The script will create an object at plugins.absBiblesearch (which is normal for phonegap).
 
 ## Usage
 
