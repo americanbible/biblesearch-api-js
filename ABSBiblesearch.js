@@ -46,7 +46,7 @@
 
     // ############################## ERROR #################################
     ABSBiblesearch.prototype.lastError = function() {
-        var e = _lastError
+        var e = _lastError;
         _lastError = '';
         return e;
     };
@@ -57,7 +57,7 @@
         The BibleSearch API provides a general search endpoint. It accepts a query parameter that can be either a passage or a keyword and will automatically figure out what kind of query you've given it. If it's a keyword search, the results will be the same as a keyword search on the website: the parser performs stemming and also takes into account users' tags and 'Was this helpful?' votes.
     */
     ABSBiblesearch.prototype.search = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
@@ -81,7 +81,7 @@
         Versions are the specific editions of the Bible such as the New International Version (NIV) or King James Version (KJV). Versions have many books.
     */
     ABSBiblesearch.prototype.versions = function(callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
@@ -93,12 +93,12 @@
         Returns a list of all books for the specified version. The available version IDs can be listed with the versions endpoint.
     */
     ABSBiblesearch.prototype.booksInVersion = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.version || options.version == '') {
+        if (!options || !options.version || options.version === '') {
             _lastError = 'Must supply a version id.';
             return false;
         }
@@ -114,12 +114,12 @@
         Returns a list of all versions specified by the language parameter. Use an ISO 639-2 abbreviation as the language parameter.
     */
     ABSBiblesearch.prototype.versionsByLanguage = function(language, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (language == null || language == '') {
+        if (language === null || language === '') {
             _lastError = 'Must supply a language.';
             return false;
         }
@@ -131,12 +131,12 @@
         Returns information about a specific version. The available version IDs can be listed with the versions endpoint.
     */
     ABSBiblesearch.prototype.versionInformation = function(version, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (version == null || version == '') {
+        if (version === null || version === '') {
             _lastError = 'Must supply a version id.';
             return false;
         }
@@ -152,17 +152,17 @@
         Returns the specified book resource in the specified version if one is given. The available version IDs can be listed with the versions endpoint. The book name should be specified with the OSIS normative abbreviation for the book.
     */
     ABSBiblesearch.prototype.book = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.version || options.version == '') {
+        if (!options || !options.version || options.version === '') {
             _lastError = 'Must supply a version id.';
             return false;
         }
 
-        if (!options || !options.book || options.book == '') {
+        if (!options || !options.book || options.book === '') {
             _lastError = 'Must supply a book id.';
             return false;
         }
@@ -175,17 +175,17 @@
         Returns a list of all chapters for the specified book resource in the specified version. The available version IDs can be listed with the versions endpoint. The book ID is specified with the OSIS normative abbreviation for the book.
     */
     ABSBiblesearch.prototype.chaptersInBook = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.version || options.version == '') {
+        if (!options || !options.version || options.version === '') {
             _lastError = 'Must supply a version id.';
             return false;
         }
 
-        if (!options || !options.book || options.book == '') {
+        if (!options || !options.book || options.book === '') {
             _lastError = 'Must supply a book id.';
             return false;
         }
@@ -202,22 +202,22 @@
         Returns the chapter specified by version, book, and chapter number. The available version IDs can be listed with the versions endpoint. The book ID is specified with the OSIS normative abbreviation for the book. The chapter number is a number that is a valid chapter in the book and version.
     */
     ABSBiblesearch.prototype.chapter = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.version || options.version == '') {
+        if (!options || !options.version || options.version === '') {
             _lastError = 'Must supply a version id.';
             return false;
         }
 
-        if (!options || !options.book || options.book == '') {
+        if (!options || !options.book || options.book === '') {
             _lastError = 'Must supply a book id.';
             return false;
         }
 
-        if (!options || !options.chapter || options.chapter == '') {
+        if (!options || !options.chapter || options.chapter === '') {
             _lastError = 'Must supply a chapter number.';
             return false;
         }
@@ -230,22 +230,22 @@
         Returns a list of all verses for the chapter resource specified by version, book, and chapter number. The available version IDs can be listed with the versions endpoint. The book ID is specified with the OSIS normative abbreviation for the book. The chapter number is a number that is a valid chapter in the book and version.
     */
     ABSBiblesearch.prototype.chapterVerseList = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.version || options.version == '') {
+        if (!options || !options.version || options.version === '') {
             _lastError = 'Must supply a version id.';
             return false;
         }
 
-        if (!options || !options.book || options.book == '') {
+        if (!options || !options.book || options.book === '') {
             _lastError = 'Must supply a book id.';
             return false;
         }
 
-        if (!options || !options.chapter || options.chapter == '') {
+        if (!options || !options.chapter || options.chapter === '') {
             _lastError = 'Must supply a chapter number.';
             return false;
         }
@@ -254,11 +254,11 @@
         if (options.start || options.end) {
             url = url + '?';
         }
-        if (options.start && options.start != '') {
-            url = url + 'start=' + options.start + '&'
+        if (options.start && options.start !== '') {
+            url = url + 'start=' + options.start + '&';
         }
-        if (options.end && options.end != '') {
-            url = url + 'end=' + options.end
+        if (options.end && options.end !== '') {
+            url = url + 'end=' + options.end;
         }
         return this.json(url, callback);
     };
@@ -283,12 +283,12 @@
         limit: may be an integer to request a maximum number of records be returned. If provided, limit must be less than or equal to 500.
     */
     ABSBiblesearch.prototype.versesByKeyword = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.keyword || options.keyword == '') {
+        if (!options || !options.keyword || options.keyword === '') {
             _lastError = 'Must supply a keyword.';
             return false;
         }
@@ -305,27 +305,27 @@
         Returns the specific verse resource with given version, book, chapter number, and verse number. The available version IDs can be listed with the versions endpoint. The book ID is specified with the OSIS normative abbreviation for the book. The chapter number is a number that is a valid chapter in the book and version. The verse number is a number that is a valid verse in the chapter and version.
     */
     ABSBiblesearch.prototype.versesByRef = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.version || options.version == '') {
+        if (!options || !options.version || options.version === '') {
             _lastError = 'Must supply a version.';
             return false;
         }
 
-        if (!options || !options.book || options.book == '') {
+        if (!options || !options.book || options.book === '') {
             _lastError = 'Must supply a book.';
             return false;
         }
 
-        if (!options || !options.chapter || options.chapter == '') {
+        if (!options || !options.chapter || options.chapter === '') {
             _lastError = 'Must supply a chapter.';
             return false;
         }
 
-        if (!options || !options.verse || options.verse == '') {
+        if (!options || !options.verse || options.verse === '') {
             _lastError = 'Must supply a verse.';
             return false;
         }
@@ -346,18 +346,18 @@
         It's important to note that the response only contains references to the passage(s), and a preview of the first three verses of the passage(s) themselves. To fetch the full Bible text of each passage you will need to use the verse api.
     */
     ABSBiblesearch.prototype.passages = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!options || !options.passages || options.passages == '') {
+        if (!options || !options.passages || options.passages === '') {
             _lastError = 'Must supply a passage.';
             return false;
         }
 
         var url = _baseUrl;
-        if (options.version && options.version != '') {
+        if (options.version && options.version !== '') {
             url = url + options.version + '/';
         }
         url = url + 'passages.js?q[]=' + options.passages;
@@ -370,13 +370,13 @@
         By convention, books of the Bible are often organized into groups, such as the Pentateuch or Gospels. Which books belong in a grouping can vary for different versions of the Bible, and may contain a different sequence than appear in a complete book list. Book groups have many books.
     */
     ABSBiblesearch.prototype.bookgroups = function(options, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
         var url = _baseUrl + 'bookgroups';
-        if (options && options.id && options.id != '') {
+        if (options && options.id && options.id !== '') {
             url = url + '/' + options.id;
         }
         url = url + '.js';
@@ -389,17 +389,17 @@
         previous API call.
     */
     ABSBiblesearch.prototype.follow = function(path, callback) {
-        if (_APIKey == '') {
+        if (_APIKey === '') {
             _lastError = 'API Key must be specified.';
             return false;
         }
 
-        if (!path || path == '') {
+        if (!path || path === '') {
             _lastError = 'No path specified';
             return false;
         }
 
-        if (path.substr(0,1) == '/') {
+        if (path.substr(0,1) === '/') {
             path = path.substr(1);
         }
         var url = _baseUrl + path;
@@ -413,7 +413,7 @@
     // ################################# UTILS ######################################
     ABSBiblesearch.prototype.networkIsUp = function() {
         // If cordova environment has connection information available, make sure we're online.
-        if (navigator.connection && (navigator.connection.type == Connection.UNKNOWN || navigator.connection.type == Connection.NONE) ) {
+        if (navigator.connection && (navigator.connection.type === Connection.UNKNOWN || navigator.connection.type === Connection.NONE) ) {
             if (_debug) { console.log('ABS - Network down'); }
             return false;
         }
@@ -444,7 +444,7 @@
         _xhr.onreadystatechange = function() {
             if (_debug) { console.log('ABS state: ' + _xhr.readyState); }
             if (_debug && _xhr.readyState === 4) { console.log('ABS status: ' + _xhr.status); }
-            if (_xhr.readyState === 4 && _xhr.status == 200) {
+            if (_xhr.readyState === 4 && _xhr.status === 200) {
                 if (_debug) { console.log('ABS responseText: ' + _xhr.responseText); }
                 var obj = window.plugins.absBiblesearch.parseJSON(_xhr.responseText + '');
 
@@ -503,14 +503,14 @@
 
     // Mostly just for testing purposes
     ABSBiblesearch.prototype.setFumsInterval = function(value) {
-        if (value == null && _fumsInterval != null ) { clearInterval(_fumsInterval); }
+        if (value === null && _fumsInterval !== null ) { clearInterval(_fumsInterval); }
         _fumsInterval = value;
     };
 
     ABSBiblesearch.prototype.suppressFumsInjection = function(flag) {
-        if (flag == null) { flag = true; }
+        if (flag === null) { flag = true; }
         _fumsInjectionSuppression = flag;
-    }
+    };
 
     ABSBiblesearch.prototype.injectFumsJs = function() {
         if (_fumsInjectionSuppression) {
@@ -532,7 +532,7 @@
     ABSBiblesearch.prototype.addFums = function(data) {
         var _fums;
         if (localStorage.getItem('absFums') === null) {
-            _fums = new Array();
+            _fums = [];
         }
         else {
             _fums = JSON.parse(window.localStorage.getItem('absFums'));
@@ -555,7 +555,7 @@
         }
 
         var val = _fums.shift();
-        if (_fums.length == 0) {
+        if (_fums.length === 0) {
             window.localStorage.removeItem('absFums');
         }
         else {
@@ -574,7 +574,7 @@
         }
 
         // If we're here because of a checkback, then clear the interval.
-        if (_fumsInterval != null) {
+        if (_fumsInterval !== null) {
             clearInterval(_fumsInterval);
             _fumsInterval = null;
         }
