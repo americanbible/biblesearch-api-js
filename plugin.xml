@@ -15,13 +15,11 @@
         <clobbers target="plugins.absBiblesearch" />
     </js-module>
 
-    <!-- android -->
     <platform name="android">
-        <!-- for future use -->
+        <!-- Just to clarify, this plugin is js only, and requires no native code. -->
     </platform>
 
-    <!-- ios -->
     <platform name="ios">
-        <!-- for future use -->
+        <!-- Just to clarify, this plugin is js only, and requires no native code. -->
     </platform>
 </plugin>
