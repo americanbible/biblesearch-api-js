@@ -1,6 +1,6 @@
 # biblesearch-api-js
 
-The American Bible Society has produced this javascript library to ease the use of the Bible Search api (http://bibles.org/pages/api) in phonegap mobile applications.  The api (and this library) allow you to easily: 
+The American Bible Society has produced this javascript library to ease the use of the Bible Search api (http://bibles.org/pages/api) in phonegap mobile applications.  The api (and this library) allow you to easily:
 
 * search the Bible
 * locate specific passages
@@ -12,17 +12,13 @@ In addition ABS manages the version copyright requirements and keeping the textu
 
 ## Installation
 
-This plugin is compatible with the new cordova plugin package management initiative (http://shazronatadobe.wordpress.com/2012/11/07/cordova-plugins-put-them-in-your-own-repo-2/).  If you have pluginstall (https://github.com/alunny/pluginstall) then install the plugin via that tool.  If you don't then follow these steps.
+To install this plugin, follow the [Command-line Interface Guide](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface).
 
-* Move the www/ABSBiblesearch.js file into your project.  You can keep this wherever you typically store your plugin js files.
-* Add a script reference to the js file.
-	<script type="text/javascript" src="ABSBiblesearch.js"></script>
-* Add two hosts to your External Hosts white list to allow communication with the api.
- * *.bibles.org
- *	*.cloudfront.net
-* Get an API key.  The key is free.  http://bibles.org/pages/api/signup
+    cordova plugin add https://github.com/americanbible/biblesearch-api-js.git
 
-Unlike most plugins there is no native code, so you don't have to add this plugin to the phonegap plugin list.  
+If you are not using the Cordova Command-line Interface, follow [Using Plugman to Manage Plugins](http://cordova.apache.org/docs/en/edge/guide_plugin_ref_plugman.md.html).
+
+    plugman --platform ios --project platforms/ios/ --plugin https://github.com/americanbible/biblesearch-api-js.git
 
 ## Usage
 
@@ -37,7 +33,7 @@ In your javascript:
         for (var i = 0; i < data.response.versions.length; i++) {
             var version = data.response.versions[i];
             alert(version.version + ': ' + version.name);
-        }    
+        }
     })) {
         alert('error: ' + bsearch.lastError());
     }
@@ -45,3 +41,8 @@ In your javascript:
 ## Comments and Complaints
 
 If you have any issues you can let us know by email at mbradshaw@americanbible.org.
+
+## Changelog
+
+v1.0.4 - Update for cordova v3 plugin architecture.
+v1.0.3 - Fix asynchronous credential issue
