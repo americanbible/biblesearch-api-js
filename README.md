@@ -22,6 +22,8 @@ If you are not using the Cordova Command-line Interface, follow [Using Plugman t
 
 If you want to use this in a web app then just include the script appropriately for your application.  It can be easily loaded via require.js with no problems.  The script will create an object at plugins.absBiblesearch (which is normal for phonegap).
 
+You will also need to get a free api key at http://bibles.org/pages/api/signup.
+
 ## Usage
 
 In your javascript:
@@ -39,6 +41,10 @@ In your javascript:
     })) {
         alert('error: ' + bsearch.lastError());
     }
+
+## API & Key
+
+You can get additional details on the api at http://bibles.org/pages/api.
 
 ## Comments and Complaints
 
