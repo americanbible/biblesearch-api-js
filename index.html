@@ -50,7 +50,7 @@
 <li>get information about specific books, chapters, and verses</li>
 <li>do all that in one or more versions</li>
 <li>store nothing locally</li>
-</ul><p>In addition ABS manages the version copyright requirements and keeping the textual data up to date with latest changes by the copyright owners/publishers.  Use of this library and the api is free to the public for non-commercial use.  See <a href="http://bibles.org/pages/api">http://bibles.org/pages/api</a> for additional information.</p>
+</ul><p>In addition ABS manages the version copyright requirements and keeps the textual data up to date with latest changes by the copyright owners/publishers.  Use of this library and the api is free to the public for non-commercial use.  See <a href="http://bibles.org/pages/api">http://bibles.org/pages/api</a> for additional information.</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -101,6 +101,8 @@ if (!bsearch.versionsByLanguage('eng-US', function(data) {
 
 <h2>
 <a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<p>v1.0.5 - Fix for ios.  Auth header wasn't going through in some cases, so we're going low-tech.  Works in ios and safari.</p>
 
 <p>v1.0.4 - Update for cordova v3 plugin architecture.</p>
 
