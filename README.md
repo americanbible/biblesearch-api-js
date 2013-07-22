@@ -53,4 +53,5 @@ If you have any issues you can let us know by email at mbradshaw@americanbible.o
 ## Changelog
 
 v1.0.4 - Update for cordova v3 plugin architecture.
+
 v1.0.3 - Fix asynchronous credential issue
