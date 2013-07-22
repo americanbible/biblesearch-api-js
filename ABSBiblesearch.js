@@ -1,6 +1,8 @@
 // Version 1.0.4
 // Copyright 2013 American Bible Society
 // Licensed under MIT.
+// http://americanbible.github.io/biblesearch-api-js/
+// https://github.com/americanbible/biblesearch-api-js
 // http://bibles.org/pages/api
 
 (function() {
