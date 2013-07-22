@@ -7,6 +7,14 @@
 
     <name>American Bible Society Biblesearch</name>
 
+    <description>
+        The American Bible Society has produced this javascript library to ease the use of the Bible Search api (http://bibles.org/pages/api) in cordova/phonegap applications. The api (and this library) allow you to easily search the Bible, locate specific passages, get information about specific books, chapters, and verses, do all that in one or more versions, and store nothing locally.
+
+        In addition ABS manages the version copyright requirements and keeping the textual data up to date with latest changes by the copyright owners/publishers. Use of this library and the api is free to the public for non-commercial use. See http://bibles.org/pages/api for additional information.
+    </description>
+
+    <license>MIT</license>
+
     <engines>
         <engine name="cordova" version=">=1.7.0" />
     </engines>
