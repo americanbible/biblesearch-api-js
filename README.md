@@ -8,7 +8,7 @@ The American Bible Society has produced this javascript library to ease the use 
 * do all that in one or more versions
 * store nothing locally
 
-In addition ABS manages the version copyright requirements and keeping the textual data up to date with latest changes by the copyright owners/publishers.  Use of this library and the api is free to the public for non-commercial use.  See http://bibles.org/pages/api for additional information.
+In addition ABS manages the version copyright requirements and keeps the textual data up to date with latest changes by the copyright owners/publishers.  Use of this library and the api is free to the public for non-commercial use.  See http://bibles.org/pages/api for additional information.
 
 ## Installation
 
