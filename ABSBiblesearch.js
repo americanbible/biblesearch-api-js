@@ -458,8 +458,9 @@
             }
         };
 
+        url = url.replace('//', '//' + _APIKey + ':x@');
         _xhr.open('GET', url, _async);
-        _xhr.setRequestHeader('Authorization', 'Basic ' + btoa(_APIKey + ':x'));
+        //_xhr.setRequestHeader('Authorization', 'Basic ' + btoa(_APIKey + ':x'));
         _xhr.timeout = 10000;
         _xhr.ontimeout = timeout ? timeout : this.timeout;
         _xhr.send(null);
