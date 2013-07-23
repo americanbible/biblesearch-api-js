@@ -1,4 +1,4 @@
-// Version 1.0.5
+// Version 1.0.6
 // Copyright 2013 American Bible Society
 // Licensed under MIT.
 // http://americanbible.github.io/biblesearch-api-js/
@@ -201,7 +201,7 @@
         http://bibles.org/pages/api/documentation/chapters
         Chapters are the sub-sections of a selected book. Chapters belong to books and have many verses.
 
-        Returns the chapter specified by version, book, and chapter number. The available version IDs can be listed with the versions endpoint. The book ID is specified with the OSIS normative abbreviation for the book. The chapter number is a number that is a valid chapter in the book and version.
+        Returns the chapter specified by version, book, and chapter number. The available version IDs can be listed with the versions endpoint. The book ID is specified with the OSIS normative abbreviation for the book. The chapter number is a number that is a valid chapter in the book and version.  If you'd like to get crossreferences and footnotes set options.marginalia = true.
     */
     ABSBiblesearch.prototype.chapter = function(options, callback) {
         if (_APIKey === '') {
@@ -225,6 +225,11 @@
         }
 
         var url = _baseUrl + 'chapters/' + options.version + ':' + options.book + '.' + options.chapter + '.js';
+
+        if (options  && options.marginalia) {
+            url += '?include_marginalia=' + options.marginalia;
+        }
+
         return this.json(url, callback);
     };
 
@@ -474,7 +479,7 @@
         }
 
         // Adapted from jQuery 1.8.2
-        rtrim = new RegExp( '^[\\x20\\t\\r\\n\\f]+|((?:^|[^\\\\])(?:\\\\.)*)[\\x20\\t\\r\\n\\f]+$', 'g' );
+        var rtrim = new RegExp( '^[\\x20\\t\\r\\n\\f]+|((?:^|[^\\\\])(?:\\\\.)*)[\\x20\\t\\r\\n\\f]+$', 'g' );
         data = (data + '').replace(rtrim, '');
 
         return JSON.parse(data);
@@ -533,6 +538,11 @@
 
     // Store each FUMS item in localstorage for persistence.
     ABSBiblesearch.prototype.addFums = function(data) {
+        // If only the fums id has been passed in, wrap it in the needed javascript.
+        if (data.indexOf('var') !== 0) {
+            data = 'var _BAPI=_BAPI||{};if(typeof(_BAPI.t)!=\'undefined\'){ _BAPI.t(\'' + data + '\'); }';
+        }
+
         var _fums;
         if (localStorage.getItem('absFums') === null) {
             _fums = [];
@@ -548,7 +558,7 @@
     };
 
     // Shift off the first item in the fums array
-    ABSBiblesearch.prototype.getFums = function(data) {
+    ABSBiblesearch.prototype.getFums = function() {
         var _fums;
         if (localStorage.getItem('absFums') === null) {
             return null;
@@ -569,7 +579,7 @@
     };
 
     // Push all fums items into the DOM.
-    ABSBiblesearch.prototype.flushFums = function(data) {
+    ABSBiblesearch.prototype.flushFums = function() {
         if (!this.networkIsUp()) {
             _fumsInterval = setInterval(window.plugins.absBiblesearch.flushFums, 2 * 60 * 1000); // check back in 2 minutes.
             _lastError = 'Network is not up.';
