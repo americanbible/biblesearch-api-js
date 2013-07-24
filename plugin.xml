@@ -3,7 +3,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="org.americanbible.biblesearch"
-    version="1.0.5">
+    version="1.0.6">
 
     <name>American Bible Society Biblesearch</name>
 
