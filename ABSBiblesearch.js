@@ -463,9 +463,13 @@
             }
         };
 
+        // This makes browser + ios happy when the api causes a 302 redirect.
         url = url.replace('//', '//' + _APIKey + ':x@');
         _xhr.open('GET', url, _async);
-        //_xhr.setRequestHeader('Authorization', 'Basic ' + btoa(_APIKey + ':x'));
+        // It seems that to make everyone happy you have to treat credentials in a slightly different fashion.  Thanks Android.
+        if (navigator.userAgent.match(/Android/)) {
+            _xhr.setRequestHeader('Authorization', 'Basic ' + btoa(_APIKey + ':x'));
+        }
         _xhr.timeout = 10000;
         _xhr.ontimeout = timeout ? timeout : this.timeout;
         _xhr.send(null);
