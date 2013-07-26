@@ -20,6 +20,10 @@ If you are not using the Cordova Command-line Interface, follow [Using Plugman t
 
     plugman --platform ios --project platforms/ios/ --plugin https://github.com/americanbible/biblesearch-api-js.git
 
+This plugin does have a small dependency on the Cordova Network Manager.  Starting in cordova version 3.0 this is not bundled with cordova apps by default so you'll want to install it to:
+
+    cordova plugin add https://github.com/apache/cordova-plugin-network-information.git
+
 If you want to use this in a non-cordova web app then just include the script appropriately for your application.  It can be easily loaded via require.js with no problems, or just add it via a standard script tag wherever you want.  The script will create an object at plugins.absBiblesearch (which is normal for phonegap).
 
 You will also need to get a free api key at http://bibles.org/pages/api/signup.

@@ -420,7 +420,7 @@
     // ################################# UTILS ######################################
     ABSBiblesearch.prototype.networkIsUp = function() {
         // If cordova environment has connection information available, make sure we're online.
-        if (navigator.connection && (navigator.connection.type === Connection.UNKNOWN || navigator.connection.type === Connection.NONE) ) {
+        if (navigator.connection && (navigator.connection.type === 'unknown' || navigator.connection.type === 'none') ) {
             if (_debug) { console.log('ABS - Network down'); }
             return false;
         }
