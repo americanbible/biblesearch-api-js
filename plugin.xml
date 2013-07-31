@@ -19,7 +19,7 @@
         <engine name="cordova" version=">=1.7.0" />
     </engines>
 
-    <js-module src="ABSBibleSearch.js" name="ABSBibleSearch">
+    <js-module src="ABSBiblesearch.js" name="ABSBibleSearch">
         <clobbers target="plugins.absBiblesearch" />
     </js-module>
 
